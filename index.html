@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelişmiş QR Aracı</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>QR Okuyucu & Üretici</h1>
+        </header>
+
+        <nav class="tab-menu">
+            <button class="tab-button active" onclick="openTab('scanner')">Okuyucu</button>
+            <button class="tab-button" onclick="openTab('generator')">Üretici</button>
+        </nav>
+
+        <div id="scanner" class="tab-content active">
+            <section class="scanner-section">
+                <h2>QR Kod Okuyucu</h2>
+                <div id="reader" class="qr-reader"></div>
+                <div class="result-box">
+                    <strong>Sonuç:</strong> <span id="scanner-result">Henüz Kod Yok</span>
+                </div>
+                <div class="action-buttons">
+                    <button id="start-scanner-btn" class="action-btn primary">Okumayı Başlat</button>
+                    <button id="stop-scanner-btn" class="action-btn secondary" disabled>Okumayı Durdur</button>
+                </div>
+            </section>
+        </div>
+
+        <div id="generator" class="tab-content">
+            <section class="generator-section">
+                <h2>QR Kod Üretici</h2>
+                <textarea id="qr-data-input" placeholder="Metin veya URL girin..." oninput="generateQrCode()"></textarea>
+                <div id="qrcode-container" class="qr-code-display">
+                    </div>
+                <div class="action-buttons">
+                    <a id="download-qr-btn" class="action-btn primary" download="qrcode.png" style="display: none;">QR Kodu İndir</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode.js/1.0.0/qrcode.min.js"></script>
+    
+    <script src="app.js"></script>
+</body>
+</html>
